@@ -1,6 +1,6 @@
 {
-    "$schema": "http://json-schema.org/schema#",
-    "$id": "https://github.com/nalgeon/iuliia/schema.json",
+    "$schemas": "http://json-schemas.org/schemas#",
+    "$id": "https://github.com/nalgeon/iuliia/schemas.json",
     "title": "Transliteration Schema",
     "type": "object",
     "required": ["name", "description", "url", "mapping", "samples"],
