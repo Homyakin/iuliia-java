@@ -9,10 +9,10 @@ public class Translator {
 
     public Translator(Schemas schema) throws IOException {
         this.schema = schema.getSchema();
-
     }
 
     public String translate(String str) {
+        if (str == null) return null;
         var words = str.split(" ");
         var translated = new StringBuilder();
         for (var word : words) {
