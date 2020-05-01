@@ -81,6 +81,6 @@ public class MappingTest {
     }
 
     private String getFilePath(String fileName) {
-        return getClass().getClassLoader().getResource(fileName).getFile();
+        return getClass().getResource("/" + fileName).getFile();
     }
 }

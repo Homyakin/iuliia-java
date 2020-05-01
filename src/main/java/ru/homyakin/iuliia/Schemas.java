@@ -51,7 +51,7 @@ public enum Schemas {
     }
 
     private String getFilePath(String fileName) {
-        return getClass().getClassLoader().getResource(fileName).getFile();
+        return getClass().getResource("/" + fileName).getFile();
     }
 
 
