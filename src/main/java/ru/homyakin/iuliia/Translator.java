@@ -27,9 +27,9 @@ public class Translator {
     private String translateWord(String word) {
         var pair = splitWord(word);
         var translatedEnding = schema.translateEnding(pair.getValue());
-
-        return translateLetters(pair.getKey()) +
-            translatedEnding.orElseGet(() -> translateLetters(pair.getValue()));
+        return translatedEnding
+            .map(s -> translateLetters(pair.getKey()) + s)
+            .orElseGet(() -> translateLetters(word));
     }
 
     private String translateLetters(String word) {
