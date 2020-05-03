@@ -1,7 +1,6 @@
 package ru.homyakin.iuliia.tests;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import org.junit.Assert;
