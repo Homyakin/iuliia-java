@@ -4,7 +4,7 @@
 
     <groupId>ru.homyakin</groupId>
     <artifactId>iuliia-java</artifactId>
-    <version>1.4</version>
+    <version>1.5-SNAPSHOT</version>
 
     <name>iuliia-java</name>
     <description>Transliterate Cyrillic → Latin in every possible way</description>
