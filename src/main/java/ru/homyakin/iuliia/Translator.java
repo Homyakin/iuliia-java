@@ -49,6 +49,8 @@ public class Translator {
             }
             if (i < length - 1) {
                 next = String.valueOf(word.charAt(i + 1));
+            } else {
+                next = "";
             }
             translated.append(schema.translateLetter(prev, curr, next));
         }
