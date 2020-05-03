@@ -22,7 +22,7 @@ public enum Schemas {
     ICAO_DOC_9303("icao_doc_9303.json"),
     ISO_9_1954("iso_9_1954.json"),
     ISO_9_1968("iso_9_1968.json"),
-    ISO_9_1968_alt("iso_9_1968_alt.json"),
+    ISO_9_1968_ALT("iso_9_1968_alt.json"),
     MOSMETRO("mosmetro.json"),
     MVD_310("mvd_310.json"),
     MVD_310_FR("mvd_310_fr.json"),
