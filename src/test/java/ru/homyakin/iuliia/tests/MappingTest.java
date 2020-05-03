@@ -3,6 +3,7 @@ package ru.homyakin.iuliia.tests;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -75,12 +76,12 @@ public class MappingTest {
 
 
     private Schema getSchema(String name) throws IOException {
-        var path = getFilePath(name);
+        var stream = getFilePath(name);
         ObjectMapper mapper = new ObjectMapper();
-        return mapper.readValue(new File(path), Schema.class);
+        return mapper.readValue(stream, Schema.class);
     }
 
-    private String getFilePath(String fileName) {
-        return getClass().getResource("/schemas/" + fileName).getFile();
+    private InputStream getFilePath(String fileName) {
+        return getClass().getResourceAsStream("/schemas/" + fileName);
     }
 }

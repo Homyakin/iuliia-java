@@ -4,6 +4,7 @@ package ru.homyakin.iuliia;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 
 public enum Schemas {
     ALA_LC("ala_lc.json"),
@@ -41,17 +42,17 @@ public enum Schemas {
     }
 
     public Schema getSchema() throws IOException {
-        var path = getFilePath(name);
+        var stream = getFilePath(name);
         ObjectMapper mapper = new ObjectMapper();
-        return mapper.readValue(new File(path), Schema.class);
+        return mapper.readValue(stream, Schema.class);
     }
 
     public String getName() {
         return name;
     }
 
-    private String getFilePath(String fileName) {
-        return getClass().getResource("/schemas/" + fileName).getFile();
+    private InputStream getFilePath(String fileName) {
+        return getClass().getResourceAsStream("/schemas/" + fileName);
     }
 
 
