@@ -15,9 +15,12 @@ public class Translator {
         if (str == null) return null;
         var words = str.split(" ");
         var translated = new StringBuilder();
-        for (var word : words) {
-            translated.append(translateWord(word));
+        int length = words.length;
+        for (int i = 0; i < length - 1; ++i) {
+            translated.append(translateWord(words[i]));
+            translated.append(" ");
         }
+        translated.append(translateWord(words[length - 1]));
         return translated.toString();
     }
 
