@@ -46,33 +46,55 @@ public class Schema {
 
     @JsonProperty("mapping")
     private void unpackMapping(Map<String, String> mapping) {
-        this.mapping = createMapping(mapping);
-    }
-
-    @JsonProperty("prev_mapping")
-    private void unpackPrevMapping(Map<String, String> prevMapping) {
-        this.prevMapping = createMapping(prevMapping);
-    }
-
-    @JsonProperty("next_mapping")
-    private void unpackNextMapping(Map<String, String> nextMapping) {
-        this.nextMapping = createMapping(nextMapping);
-    }
-
-    @JsonProperty("ending_mapping")
-    private void unpackEndingMapping(Map<String, String> endingMapping) {
-        this.endingMapping = createMapping(endingMapping);
-    }
-
-    private Map<String, String> createMapping(Map<String, String> mapping) {
         if (mapping == null) {
-            return new HashMap<>();
+            this.mapping = new HashMap<>();
         } else {
             var entrySet = new HashSet<>(mapping.entrySet());
             for (var entry : entrySet) {
                 mapping.put(capitalize(entry.getKey()), capitalize(entry.getValue()));
             }
-            return mapping;
+            this.mapping = mapping;
+        }
+    }
+
+    @JsonProperty("prev_mapping")
+    private void unpackPrevMapping(Map<String, String> prevMapping) {
+        if (prevMapping == null) {
+            this.prevMapping = new HashMap<>();
+        } else {
+            var entrySet = new HashSet<>(prevMapping.entrySet());
+            for (var entry : entrySet) {
+                prevMapping.put(capitalize(entry.getKey()), entry.getValue());
+                prevMapping.put(entry.getKey().toUpperCase(), capitalize(entry.getValue()));
+            }
+            this.prevMapping = prevMapping;
+        }
+    }
+
+    @JsonProperty("next_mapping")
+    private void unpackNextMapping(Map<String, String> nextMapping) {
+        if (nextMapping == null) {
+            this.nextMapping = new HashMap<>();
+        } else {
+            var entrySet = new HashSet<>(nextMapping.entrySet());
+            for (var entry : entrySet) {
+                nextMapping.put(capitalize(entry.getKey()), capitalize(entry.getValue()));
+                nextMapping.put(entry.getKey().toUpperCase(), capitalize(entry.getValue()));
+            }
+            this.nextMapping = nextMapping;
+        }
+    }
+
+    @JsonProperty("ending_mapping")
+    private void unpackEndingMapping(Map<String, String> endingMapping) {
+        if (endingMapping == null) {
+            this.endingMapping = new HashMap<>();
+        } else {
+            var entrySet = new HashSet<>(endingMapping.entrySet());
+            for (var entry : entrySet) {
+                endingMapping.put(entry.getKey().toUpperCase(), entry.getValue().toUpperCase());
+            }
+            this.endingMapping = endingMapping;
         }
     }
 
