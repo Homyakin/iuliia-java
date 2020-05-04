@@ -75,12 +75,12 @@ public class MappingTest {
 
 
     private Schema getSchema(String name) throws IOException {
-        var stream = getFilePath(name);
+        var stream = getJsonStream(name);
         ObjectMapper mapper = new ObjectMapper();
         return mapper.readValue(stream, Schema.class);
     }
 
-    private InputStream getFilePath(String fileName) {
+    private InputStream getJsonStream(String fileName) {
         return getClass().getResourceAsStream("/schemas/" + fileName);
     }
 }

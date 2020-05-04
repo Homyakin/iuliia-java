@@ -41,7 +41,7 @@ public enum Schemas {
     }
 
     public Schema getSchema() throws IOException {
-        var stream = getFilePath(name);
+        var stream = getJsonStream(name);
         ObjectMapper mapper = new ObjectMapper();
         return mapper.readValue(stream, Schema.class);
     }
@@ -50,7 +50,7 @@ public enum Schemas {
         return name;
     }
 
-    private InputStream getFilePath(String fileName) {
+    private InputStream getJsonStream(String fileName) {
         return getClass().getResourceAsStream("/schemas/" + fileName);
     }
 
