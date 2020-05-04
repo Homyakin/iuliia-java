@@ -7,6 +7,10 @@ public class Translator {
 
     private final Schema schema;
 
+    /**
+     * @param schema The scheme according to which the translation will take place
+     * @throws IllegalStateException if schema was corrupted
+     */
     public Translator(Schemas schema) {
         try {
             this.schema = schema.getSchema();
