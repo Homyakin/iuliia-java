@@ -1,4 +1,4 @@
- `Iuliia`
+# `Iuliia`
 
 > Transliterate Cyrillic → Latin in every possible way
 
@@ -8,7 +8,7 @@ Transliteration means representing Cyrillic data (mainly names and geographic lo
 
 -   [20 transliteration schemas](https://github.com/nalgeon/iuliia/blob/master/README.md#supported-schemas) (rule sets), including all main international and Russian standards.
 -   Correctly implements not only the base mapping, but all the special rules for letter combinations and word endings (AFAIK, Iuliia is the only library which does so).
--   Simple API and zero third-party dependencies.
+-   Simple API.
 
 For schema details and other information, see <https://dangry.ru/iuliia> (in Russian).
 
