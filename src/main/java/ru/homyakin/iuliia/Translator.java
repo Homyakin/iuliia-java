@@ -20,7 +20,7 @@ public class Translator {
 
     public String translate(String str) {
         if (str == null) return null;
-        var words = str.split(" ");
+        var words = str.split("\\s+");
         var translated = new StringBuilder();
         int length = words.length;
         for (int i = 0; i < length - 1; ++i) {
