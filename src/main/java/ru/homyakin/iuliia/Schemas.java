@@ -53,6 +53,4 @@ public enum Schemas {
     private InputStream getJsonStream(String fileName) {
         return getClass().getResourceAsStream("/schemas/" + fileName);
     }
-
-
 }
