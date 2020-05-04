@@ -1,7 +1,6 @@
 package ru.homyakin.iuliia;
 
 import java.io.IOException;
-import javafx.util.Pair;
 
 public class Translator {
 
@@ -33,10 +32,10 @@ public class Translator {
     }
 
     private String translateWord(String word) {
-        var pair = splitWord(word);
-        var translatedEnding = schema.translateEnding(pair.getValue());
+        var splitWord = splitWord(word);
+        var translatedEnding = schema.translateEnding(splitWord.ending);
         return translatedEnding
-            .map(s -> translateLetters(pair.getKey()) + s)
+            .map(s -> translateLetters(splitWord.stem) + s)
             .orElseGet(() -> translateLetters(word));
     }
 
@@ -65,13 +64,23 @@ public class Translator {
         return translated.toString();
     }
 
-    private Pair<String, String> splitWord(String word) {
+    private SplitWord splitWord(String word) {
         int endingLength = 2;
         if (word.length() > endingLength) {
             int separateIndex = word.length() - endingLength;
-            return new Pair<>(word.substring(0, separateIndex), word.substring(separateIndex));
+            return new SplitWord(word.substring(0, separateIndex), word.substring(separateIndex));
         } else {
-            return new Pair<>(word, "");
+            return new SplitWord(word, "");
+        }
+    }
+
+    private static class SplitWord {
+        private final String stem;
+        private final String ending;
+
+        public SplitWord(String stem, String ending) {
+            this.stem = stem;
+            this.ending = ending;
         }
     }
 }
