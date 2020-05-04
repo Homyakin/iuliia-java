@@ -7,8 +7,12 @@ public class Translator {
 
     private final Schema schema;
 
-    public Translator(Schemas schema) throws IOException {
-        this.schema = schema.getSchema();
+    public Translator(Schemas schema) {
+        try {
+            this.schema = schema.getSchema();
+        } catch (IOException e) {
+            throw new IllegalStateException("Resources were corrupted");
+        }
     }
 
     public String translate(String str) {
