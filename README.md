@@ -13,15 +13,19 @@ Transliteration means representing Cyrillic data (mainly names and geographic lo
 For schema details and other information, see <https://dangry.ru/iuliia> (in Russian).
 
 ## Installation
-Maven dependency (don't use versions below 1.4)
+Maven dependency
 ```xml
 <!-- https://mvnrepository.com/artifact/ru.homyakin/iuliia-java -->
 <dependency>
     <groupId>ru.homyakin</groupId>
     <artifactId>iuliia-java</artifactId>
-    <version>1.4</version>
+    <version>1.6</version>
 </dependency>
+```
 
+Gradle
+```gradle
+implementation 'ru.homyakin:iuliia-java:1.6'
 ```
 
 ## Usage (Java 11 and higher)
