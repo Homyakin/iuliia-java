@@ -1,9 +1,11 @@
 package ru.homyakin.iuliia;
 
 import java.io.IOException;
+import java.util.regex.Pattern;
 
 public class Translator {
 
+    private final static Pattern separator = Pattern.compile("\\b");
     private final Schema schema;
 
     /**
@@ -20,12 +22,11 @@ public class Translator {
 
     public String translate(String str) {
         if (str == null) return null;
-        var words = str.split("\\s+");
+        var words = separator.split(str);
         var translated = new StringBuilder();
         int length = words.length;
         for (int i = 0; i < length - 1; ++i) {
             translated.append(translateWord(words[i]));
-            translated.append(" ");
         }
         translated.append(translateWord(words[length - 1]));
         return translated.toString();
