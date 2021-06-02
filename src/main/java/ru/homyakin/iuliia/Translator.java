@@ -25,10 +25,9 @@ public class Translator {
         var words = separator.split(str);
         var translated = new StringBuilder();
         int length = words.length;
-        for (int i = 0; i < length - 1; ++i) {
+        for (int i = 0; i < length; ++i) {
             translated.append(translateWord(words[i]));
         }
-        translated.append(translateWord(words[length - 1]));
         return translated.toString();
     }
 
