@@ -24,9 +24,8 @@ public class Translator {
         if (str == null) return null;
         var words = separator.split(str);
         var translated = new StringBuilder();
-        int length = words.length;
-        for (int i = 0; i < length; ++i) {
-            translated.append(translateWord(words[i]));
+        for (String word : words) {
+            translated.append(translateWord(word));
         }
         return translated.toString();
     }
