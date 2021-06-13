@@ -25,7 +25,7 @@ Maven dependency
 
 Gradle
 ```gradle
-implementation 'ru.homyakin:iuliia-java:1.6'
+implementation 'ru.homyakin:iuliia-java:1.7'
 ```
 
 ## Usage (Java 11 and higher)
