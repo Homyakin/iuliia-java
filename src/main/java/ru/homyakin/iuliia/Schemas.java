@@ -1,9 +1,10 @@
 package ru.homyakin.iuliia;
 
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.InputStream;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public enum Schemas {
     ALA_LC("ala_lc.json"),
@@ -42,6 +43,10 @@ public enum Schemas {
 
     public Schema getSchema() throws IOException {
         var stream = getJsonStream(name);
+        return getSchema(stream);
+    }
+
+    public static Schema getSchema(InputStream stream) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         return mapper.readValue(stream, Schema.class);
     }

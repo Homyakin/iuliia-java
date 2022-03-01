@@ -20,6 +20,10 @@ public class Translator {
         }
     }
 
+    public Translator(Schema schema) {
+        this.schema = schema;
+    }
+
     public String translate(String str) {
         if (str == null) return null;
         var words = separator.split(str);
