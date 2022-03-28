@@ -61,7 +61,7 @@ public class SchemasTest {
     public void gost779AltTest() throws IOException {
         var translator = new Translator(Schemas.GOST_779_ALT);
         var sentence = translator.translate("Юлия, съешь ещё этих мягких французских булок из Йошкар-Олы, да выпей алтайского чаю");
-        Assert.assertEquals("Yuliya, s``esh` eshhyo е`tix myagkix franczuzskix bulok iz Joshkar-Oly`, da vy`pej altajskogo chayu", sentence);
+        Assert.assertEquals("Yuliya, s``esh` eshhyo e`tix myagkix franczuzskix bulok iz Joshkar-Oly`, da vy`pej altajskogo chayu", sentence);
     }
 
     @Test
@@ -187,7 +187,7 @@ public class SchemasTest {
     public void yandexMapsTest() throws IOException {
         var translator = new Translator(Schemas.YANDEX_MAPS);
         var sentence = translator.translate("Юлия, съешь ещё этих мягких французских булок из Йошкар-Олы, да выпей алтайского чаю");
-        Assert.assertEquals("Yuliya, syesh eschyo etikh myagkikh frantsuzskikh bulok iz Yoshkar-Oly, da vypey altayskogo chayu", sentence);
+        Assert.assertEquals("Yuliya, syesh yeschyo etikh myagkikh frantsuzskikh bulok iz Yoshkar-Oly, da vypey altayskogo chayu", sentence);
     }
 
     @Test
