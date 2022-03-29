@@ -19,13 +19,13 @@ Maven dependency
 <dependency>
     <groupId>ru.homyakin</groupId>
     <artifactId>iuliia-java</artifactId>
-    <version>1.7</version>
+    <version>1.8</version>
 </dependency>
 ```
 
 Gradle
 ```gradle
-implementation 'ru.homyakin:iuliia-java:1.7'
+implementation 'ru.homyakin:iuliia-java:1.8'
 ```
 
 ## Usage (Java 11 and higher)
