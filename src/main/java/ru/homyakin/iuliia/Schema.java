@@ -99,13 +99,9 @@ public class Schema {
     }
 
     private String capitalize(String str) {
-        int strLen;
-        if (str == null || (strLen = str.length()) == 0) {
+        if (str == null || str.length() == 0) {
             return str;
         }
-        return new StringBuffer(strLen)
-            .append(Character.toTitleCase(str.charAt(0)))
-            .append(str.substring(1))
-            .toString();
+        return Character.toTitleCase(str.charAt(0)) + str.substring(1);
     }
 }
