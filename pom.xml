@@ -40,10 +40,8 @@
 
     <properties>
         <java.version>11</java.version>
-        <spring.version>2.2.6.RELEASE</spring.version>
         <powermock.version>2.0.2</powermock.version>
-        <jackson.version>2.13.2</jackson.version>
-        <jackson-databind.version>2.13.2.1</jackson-databind.version> <!-- Нужна отдельная версия из-за уязвимости CVE-2020-36518 -->
+        <jackson.version>2.14.1</jackson.version>
     </properties>
 
     <dependencies>
@@ -57,7 +55,7 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>${jackson-databind.version}</version>
+            <version>${jackson.version}</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/junit/junit -->
