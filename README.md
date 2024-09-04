@@ -13,22 +13,26 @@ Transliteration means representing Cyrillic data (mainly names and geographic lo
 For schema details and other information, see <https://dangry.ru/iuliia> (in Russian).
 
 ## Installation
+
+### Java 17 or higher (recommended)
 Maven dependency
 ```xml
-<!-- https://mvnrepository.com/artifact/ru.homyakin/iuliia-java -->
 <dependency>
     <groupId>ru.homyakin</groupId>
     <artifactId>iuliia-java</artifactId>
-    <version>1.8</version>
+    <version>2.0.0</version>
 </dependency>
 ```
 
 Gradle
 ```gradle
-implementation 'ru.homyakin:iuliia-java:1.8'
+implementation 'ru.homyakin:iuliia-java:2.0.0'
 ```
 
-## Usage (Java 11 and higher)
+### Java 11 or higher
+Latest version for java 11 is [1.8](https://mvnrepository.com/artifact/ru.homyakin/iuliia-java/1.8)
+
+## Usage
 
 Transliterate using specified schema:
 
@@ -38,7 +42,7 @@ import ru.homyakin.iuliia.Translator;
 
 public class Clazz {
     public static void test() {        
-        var translator = new Translator(Schemas.ICAO_DOC_9303);
+        final var translator = new Translator(Schemas.ICAO_DOC_9303);
         translator.translate("Юлия"); //Iuliia
     }
 }
