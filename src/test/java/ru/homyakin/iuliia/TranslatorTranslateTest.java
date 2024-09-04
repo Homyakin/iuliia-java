@@ -1,61 +1,51 @@
-package ru.homyakin.iuliia.tests;
+package ru.homyakin.iuliia;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.io.IOException;
-import java.io.InputStream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import ru.homyakin.iuliia.Schema;
-import ru.homyakin.iuliia.Schemas;
-import ru.homyakin.iuliia.Translator;
 
-public class MappingTest {
+import java.io.IOException;
+import java.io.InputStream;
 
+public class TranslatorTranslateTest {
     @Test
-    public void iuliiaTest() throws IOException {
-        var translator = new Translator(Schemas.ICAO_DOC_9303);
-        var word = translator.translate("Юлия");
-        Assertions.assertEquals("Iuliia", word);
-    }
-
-    @Test
-    public void mappingTest() throws IOException {
+    public void Given_LetterToNumbers_When_Translate_Then_Success() throws IOException {
         var translator = createTranslator("test_mapping.json");
         var word = translator.translate("Iuliia");
         Assertions.assertEquals("243221", word);
     }
 
     @Test
-    public void prevMappingTest() throws IOException {
+    public void Given_TwoPrevLettersIntoZeroLetters_When_Translate_Then_RemoveLastLetter() throws IOException {
         var translator = createTranslator("test_prev_mapping.json");
         var word = translator.translate("Iuliia");
         Assertions.assertEquals("Iulia", word);
     }
 
     @Test
-    public void nextMappingTest() throws IOException {
+    public void Given_TwoNextLettersIntoOneLetter_When_Translate_Then_ReplaceFirstLetter() throws IOException {
         var translator = createTranslator("test_next_mapping.json");
         var word = translator.translate("Iuliia");
         Assertions.assertEquals("Yuliia", word);
     }
 
     @Test
-    public void endingMappingTest() throws IOException {
+    public void Given_TwoEndingLettersIntoTwoLetters_When_Translate_Then_ReplaceLastTwoLetters() throws IOException {
         var translator = createTranslator("test_ending_mapping.json");
         var word = translator.translate("Iuliia");
-        Assertions.assertEquals("Iuliya", word);
+        Assertions.assertEquals("Iuliyd", word);
     }
 
     @Test
-    public void shortWordTest() throws IOException {
+    public void Given_NoRules_When_Translate_Then_RemainWord() throws IOException {
         var translator = createTranslator("test_empty.json");
         var word = translator.translate("Iu");
         Assertions.assertEquals("Iu", word);
     }
 
     @Test
-    public void emptyWordTest() throws IOException {
+    public void Given_EmptyWord_When_Translate_Then_EmptyWord() throws IOException {
         var translator = createTranslator("test_empty.json");
         var word = translator.translate("");
         Assertions.assertEquals("", word);
@@ -70,9 +60,10 @@ public class MappingTest {
 
 
     private Schema getSchema(String name) throws IOException {
-        var stream = getJsonStream(name);
-        ObjectMapper mapper = new ObjectMapper();
-        return mapper.readValue(stream, Schema.class);
+        try (var stream = getJsonStream(name)) {
+            ObjectMapper mapper = new ObjectMapper();
+            return mapper.readValue(stream, Schema.class);
+        }
     }
 
     private InputStream getJsonStream(String fileName) {

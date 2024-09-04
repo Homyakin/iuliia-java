@@ -2,6 +2,7 @@ package ru.homyakin.iuliia;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -141,6 +142,7 @@ public enum Schemas {
     /**
      * Returns the schema specified by the {@link #name} field.
      * The schema is read from a JSON file in the classpath.
+     *
      * @return the schema
      * @throws IOException if there is an error reading the schema file
      */
