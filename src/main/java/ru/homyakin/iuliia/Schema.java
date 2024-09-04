@@ -67,7 +67,7 @@ public class Schema {
      * @return the transliterated letter
      */
     public String translateLetter(String prev, String curr, String next) {
-        String letter = prevMapping.get(prev + curr);
+        var letter = prevMapping.get(prev + curr);
         if (letter == null) {
             letter = nextMapping.get(curr + next);
         }
@@ -82,7 +82,7 @@ public class Schema {
         if (mapping == null) {
             this.mapping = new HashMap<>();
         } else {
-            var entrySet = new HashSet<>(mapping.entrySet());
+            final var entrySet = new HashSet<>(mapping.entrySet());
             for (var entry : entrySet) {
                 mapping.put(capitalize(entry.getKey()), capitalize(entry.getValue()));
             }
@@ -95,7 +95,7 @@ public class Schema {
         if (prevMapping == null) {
             this.prevMapping = new HashMap<>();
         } else {
-            var entrySet = new HashSet<>(prevMapping.entrySet());
+            final var entrySet = new HashSet<>(prevMapping.entrySet());
             for (var entry : entrySet) {
                 prevMapping.put(capitalize(entry.getKey()), entry.getValue());
                 prevMapping.put(entry.getKey().toUpperCase(), capitalize(entry.getValue()));
@@ -109,7 +109,7 @@ public class Schema {
         if (nextMapping == null) {
             this.nextMapping = new HashMap<>();
         } else {
-            var entrySet = new HashSet<>(nextMapping.entrySet());
+            final var entrySet = new HashSet<>(nextMapping.entrySet());
             for (var entry : entrySet) {
                 nextMapping.put(capitalize(entry.getKey()), capitalize(entry.getValue()));
                 nextMapping.put(entry.getKey().toUpperCase(), capitalize(entry.getValue()));
@@ -123,7 +123,7 @@ public class Schema {
         if (endingMapping == null) {
             this.endingMapping = new HashMap<>();
         } else {
-            var entrySet = new HashSet<>(endingMapping.entrySet());
+            final var entrySet = new HashSet<>(endingMapping.entrySet());
             for (var entry : entrySet) {
                 endingMapping.put(entry.getKey().toUpperCase(), entry.getValue().toUpperCase());
             }

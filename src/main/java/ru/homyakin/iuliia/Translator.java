@@ -36,28 +36,28 @@ public class Translator {
      */
     public String translate(String str) {
         if (str == null) return null;
-        var words = separator.split(str);
-        var translated = new StringBuilder();
-        for (String word : words) {
+        final var words = separator.split(str);
+        final var translated = new StringBuilder();
+        for (final var word : words) {
             translated.append(translateWord(word));
         }
         return translated.toString();
     }
 
     private String translateWord(String word) {
-        var splitWord = splitWord(word);
-        var translatedEnding = schema.translateEnding(splitWord.ending);
+        final var splitWord = splitWord(word);
+        final var translatedEnding = schema.translateEnding(splitWord.ending);
         return translatedEnding
             .map(s -> translateLetters(splitWord.stem) + s)
             .orElseGet(() -> translateLetters(word));
     }
 
     private String translateLetters(String word) {
-        String prev = "";
-        String curr = "";
-        String next = "";
-        int length = word.length();
-        var translated = new StringBuilder();
+        var prev = "";
+        var curr = "";
+        var next = "";
+        final int length = word.length();
+        final var translated = new StringBuilder();
         for (int i = 0; i < length; ++i) {
             if (!curr.equals("")) {
                 prev = curr;
@@ -78,9 +78,8 @@ public class Translator {
     }
 
     private SplitWord splitWord(String word) {
-        int endingLength = 2;
-        if (word.length() > endingLength) {
-            int separateIndex = word.length() - endingLength;
+        if (word.length() > WORD_ENDING_LENGTH) {
+            int separateIndex = word.length() - WORD_ENDING_LENGTH;
             return new SplitWord(word.substring(0, separateIndex), word.substring(separateIndex));
         } else {
             return new SplitWord(word, "");
@@ -89,4 +88,6 @@ public class Translator {
 
     private record SplitWord(String stem, String ending) {
     }
+
+    private static final int WORD_ENDING_LENGTH = 2;
 }
