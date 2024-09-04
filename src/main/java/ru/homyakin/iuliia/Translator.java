@@ -3,12 +3,20 @@ package ru.homyakin.iuliia;
 import java.io.IOException;
 import java.util.regex.Pattern;
 
+/**
+ * Transliterates Cyrillic string into Latin according to the rules of the {@link Schemas} set in the constructor.
+ *
+ * @author Homyakin
+ */
 public class Translator {
 
     private final static Pattern separator = Pattern.compile("(?U:\\b)");
     private final Schema schema;
 
     /**
+     * Creates instance of {@link Translator}.
+     * Each resource file is loaded only once for each instance.
+     *
      * @param schema The scheme according to which the translation will take place
      * @throws IllegalStateException if schema was corrupted
      */
@@ -20,6 +28,12 @@ public class Translator {
         }
     }
 
+    /**
+     * Transliterates given Cyrillic string into Latin according to the rules of the {@link Schemas} set in the constructor.
+     *
+     * @param str the string to transliterate
+     * @return transliterated string
+     */
     public String translate(String str) {
         if (str == null) return null;
         var words = separator.split(str);

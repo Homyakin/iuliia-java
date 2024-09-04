@@ -7,6 +7,11 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Optional;
 
+/**
+ * Represents a transliteration schema, which defines the rules for converting text from one script to another.
+ *
+ * @author Homyakin
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Schema {
     @JsonProperty("name")
@@ -18,14 +23,26 @@ public class Schema {
     private Map<String, String> nextMapping;
     private Map<String, String> endingMapping;
 
+    /**
+     * @return the name of this schema
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * @return the description of this schema
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     * Transliterates given word ending according to the rules of this schema.
+     *
+     * @param ending the ending to transliterate
+     * @return transliterated ending, or empty string if input was empty, or empty {@link Optional} if no transliteration was found
+     */
     public Optional<String> translateEnding(String ending) {
         if (ending.equals("")) {
             return Optional.of(ending);
@@ -33,6 +50,22 @@ public class Schema {
         return Optional.ofNullable(endingMapping.getOrDefault(ending, null));
     }
 
+    /**
+     * Transliterates a single letter according to this schema.
+     * <p>
+     * The letter is transliterated according to the following rules:
+     * <ol>
+     * <li>If a mapping for the previous letter and the current letter exists, it is used.
+     * <li>If a mapping for the current letter and the next letter exists, it is used.
+     * <li>If a mapping for the current letter exists, it is used.
+     * <li>The current letter is left as is.
+     * </ol>
+     *
+     * @param prev the previous letter
+     * @param curr the current letter
+     * @param next the next letter
+     * @return the transliterated letter
+     */
     public String translateLetter(String prev, String curr, String next) {
         String letter = prevMapping.get(prev + curr);
         if (letter == null) {
