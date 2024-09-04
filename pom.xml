@@ -44,9 +44,8 @@
         <jackson.version>2.17.0</jackson.version>
 
         <!--TESTS-->
-        <powermock.version>2.0.2</powermock.version>
-        <junit.version>5.9.2</junit.version>
-        <mockito.version>5.0.0</mockito.version>
+        <junit.version>5.11.0</junit.version>
+        <mockito.version>5.13.0</mockito.version>
 
         <!--PLUGINS-->
         <maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>
