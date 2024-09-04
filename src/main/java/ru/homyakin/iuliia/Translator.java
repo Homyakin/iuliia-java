@@ -87,13 +87,6 @@ public class Translator {
         }
     }
 
-    private static class SplitWord {
-        private final String stem;
-        private final String ending;
-
-        public SplitWord(String stem, String ending) {
-            this.stem = stem;
-            this.ending = ending;
-        }
+    private record SplitWord(String stem, String ending) {
     }
 }

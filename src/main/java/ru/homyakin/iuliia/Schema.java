@@ -44,7 +44,7 @@ public class Schema {
      * @return transliterated ending, or empty string if input was empty, or empty {@link Optional} if no transliteration was found
      */
     public Optional<String> translateEnding(String ending) {
-        if (ending.equals("")) {
+        if (ending.isEmpty()) {
             return Optional.of(ending);
         }
         return Optional.ofNullable(endingMapping.getOrDefault(ending, null));
@@ -132,7 +132,7 @@ public class Schema {
     }
 
     private String capitalize(String str) {
-        if (str == null || str.length() == 0) {
+        if (str == null || str.isEmpty()) {
             return str;
         }
         return Character.toTitleCase(str.charAt(0)) + str.substring(1);
