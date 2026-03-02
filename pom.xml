@@ -41,7 +41,7 @@
 
     <properties>
         <java.version>17</java.version>
-        <jackson.version>2.17.0</jackson.version>
+        <jackson.version>2.18.6</jackson.version>
 
         <!--TESTS-->
         <junit.version>5.11.0</junit.version>
